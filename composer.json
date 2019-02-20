@@ -21,7 +21,7 @@
 	"require-dev": {
 		"nette/di": "^v3.0.0-beta2",
 		"nette/tester": "^2.0",
-		"tracy/tracy": "^2.4"
+		"tracy/tracy": "^2.6"
 	},
 	"conflict": {
 		"nette/nette": "<2.2"

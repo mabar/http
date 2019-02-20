@@ -5,6 +5,8 @@ namespace Nette\Bridges\HttpTracy;
 
 use Tracy\Dumper;
 
+$snapshot = [];
+
 ?>
 <style class="tracy-debug">
 	#tracy-debug .nette-SessionPanel-parameters pre {
@@ -30,8 +32,10 @@ use Tracy\Dumper;
 		} elseif ($k === '_tracy') {
 			continue;
 		}
-		echo '<tr><th>', htmlspecialchars((string) $k, ENT_IGNORE, 'UTF-8'), '</th><td>', Dumper::toHtml($v, [Dumper::LIVE => true]), "</td></tr>\n";
+		echo '<tr><th>', htmlspecialchars((string) $k, ENT_IGNORE, 'UTF-8'), '</th><td>', Dumper::toHtml($v, [Dumper::SNAPSHOT => &$snapshot]), "</td></tr>\n";
 	}?>
 	</table>
 	<?php endif ?>
+
+	<meta itemprop=tracy <?= Dumper::formatSnapshotAttribute($snapshot) ?>>
 </div>
